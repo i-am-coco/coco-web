@@ -3,25 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coco — Operator Console</title>
+    <title>Coco — Derek decision inbox</title>
     <meta
       name="description"
-      content="Compact static operator console for Derek: human input needed, live priorities, KPI goals vs current values, and roster."
+      content="Compact operator console for Derek with real artifact cards, A/B/C input, and a Cloudflare-friendly decision capture path."
     />
-    <meta property="og:title" content="Coco — Operator Console" />
+    <meta property="og:title" content="Coco — Derek decision inbox" />
     <meta
       property="og:description"
-      content="A compact operator console for Derek with immediate asks, priorities, KPIs, and roster."
+      content="Real artifact cards, explicit human asks only when needed, and a durable submit path for Derek input."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0a0f13" />
+    <meta name="theme-color" content="#091016" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="site-frame">
@@ -30,207 +30,105 @@
           <span class="brand-mark">C</span>
           <span class="brand-copy">
             <span class="brand-name">COCO</span>
-            <span class="brand-subtitle">operator console / derek</span>
+            <span class="brand-subtitle">decision inbox / derek</span>
           </span>
         </a>
 
         <nav class="topnav" aria-label="Primary">
-          <a href="#need">Need from Derek</a>
-          <a href="#priorities">Priorities</a>
-          <a href="#kpis">KPIs</a>
-          <a href="#roster">Roster</a>
+          <a href="#inbox">Inbox</a>
+          <a href="#responses">Responses</a>
+          <a href="#ops">Ops</a>
           <a href="/state/">/state</a>
         </nav>
       </header>
 
       <main class="console-shell">
-        <section class="panel stack-section need-panel" id="need">
+        <section class="panel stack-section hero-panel" id="inbox">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Need from Derek</p>
-              <h1>Human input needed now</h1>
+              <p class="eyebrow">Top of queue</p>
+              <h1>Real artifacts. Real Derek input.</h1>
             </div>
-            <span class="status-tag status-alert">3 open</span>
+            <span class="status-tag" data-storage-badge>loading</span>
           </div>
 
-          <div class="queue-list" role="list" aria-label="Current asks for Derek">
-            <article class="queue-item" role="listitem">
-              <div class="queue-meta-block">
-                <span class="queue-kind">Decision</span>
-                <span class="queue-age">today</span>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p>
+                This is the actual Derek surface now: shipped deliverables at the top, owner defaulted to Coco,
+                and A/B/C capture instead of placeholder product questions.
+              </p>
+            </div>
+            <div class="hero-notes">
+              <div class="note-card">
+                <span class="note-label">storage</span>
+                <strong data-storage-line>Checking submit path…</strong>
               </div>
-              <div class="queue-main">
-                <h2>Approve this compact console structure as the default human-facing surface.</h2>
-                <p>Order stays fixed: asks → priorities → KPI table → roster. Keeps Derek input first and everything else scannable.</p>
+              <div class="note-card note-card-warn">
+                <span class="note-label">notification gap</span>
+                <strong data-notification-gap>
+                  Saves can persist, but this repo still does not emit Telegram or other push notifications.
+                </strong>
               </div>
-            </article>
-
-            <article class="queue-item" role="listitem">
-              <div class="queue-meta-block">
-                <span class="queue-kind">Input</span>
-                <span class="queue-age">15 min</span>
-              </div>
-              <div class="queue-main">
-                <h2>Confirm which 4–6 KPIs Derek actually wants pinned here.</h2>
-                <p>Current placeholders: shipped outputs, blockers, waiting on Derek, active agents, decision latency, noise score.</p>
-              </div>
-            </article>
-
-            <article class="queue-item" role="listitem">
-              <div class="queue-meta-block">
-                <span class="queue-kind">Review</span>
-                <span class="queue-age">async</span>
-              </div>
-              <div class="queue-main">
-                <h2>Define the standing weekly priorities Derek wants shown without explanation.</h2>
-                <p>These should be stable enough to glance at quickly, not a running narrative.</p>
-              </div>
-            </article>
+            </div>
           </div>
 
-          <div class="response-strip">
-            <span>Best reply format</span>
-            <strong>A / B / C / one short sentence</strong>
-          </div>
+          <div class="artifact-list" data-decision-inbox aria-live="polite"></div>
         </section>
 
-        <section class="panel stack-section" id="priorities">
+        <section class="panel stack-section" id="responses">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Live priorities</p>
-              <h2>What matters now</h2>
+              <p class="eyebrow">Decision log</p>
+              <h2>Latest captured input</h2>
             </div>
+            <span class="status-tag">newest first</span>
           </div>
 
-          <div class="priority-list" role="list" aria-label="Live priorities">
-            <article class="priority-row" role="listitem">
-              <span class="priority-index">01</span>
-              <div class="priority-main">
-                <strong>Concentrate all Derek-owned decisions into one visible queue.</strong>
-                <p>Owner: Coco · Next: replace placeholders with generated asks.</p>
-              </div>
-              <span class="priority-status">active</span>
-            </article>
-            <article class="priority-row" role="listitem">
-              <span class="priority-index">02</span>
-              <div class="priority-main">
-                <strong>Keep the operator surface dense, calm, and obvious in under 10 seconds.</strong>
-                <p>Owner: Coco · Constraint: avoid decorative dashboard sprawl.</p>
-              </div>
-              <span class="priority-status">active</span>
-            </article>
-            <article class="priority-row" role="listitem">
-              <span class="priority-index">03</span>
-              <div class="priority-main">
-                <strong>Preserve static deploy simplicity on Cloudflare Pages.</strong>
-                <p>Owner: Coco · Rule: no backend until a real data feed clearly earns it.</p>
-              </div>
-              <span class="priority-status priority-status-muted">guardrail</span>
-            </article>
-          </div>
+          <div class="log-list" data-response-log></div>
         </section>
 
-        <section class="panel stack-section" id="kpis">
+        <section class="panel stack-section" id="ops">
           <div class="section-head">
             <div>
-              <p class="eyebrow">KPIs</p>
-              <h2>Goal vs current</h2>
-            </div>
-            <span class="status-tag">manual snapshot</span>
-          </div>
-
-          <div class="kpi-table" role="table" aria-label="KPI table">
-            <div class="kpi-row kpi-head" role="row">
-              <span role="columnheader">Metric</span>
-              <span role="columnheader">Goal</span>
-              <span role="columnheader">Current</span>
-              <span role="columnheader">Status</span>
-              <span role="columnheader">Note</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Shipped outputs / week</strong>
-              <span role="cell">5+</span>
-              <span role="cell">4</span>
-              <span role="cell"><span class="dot good"></span>close</span>
-              <span role="cell">One more solid ship clears target.</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Open blockers</strong>
-              <span role="cell">0–1</span>
-              <span role="cell">1</span>
-              <span role="cell"><span class="dot good"></span>within range</span>
-              <span role="cell">Main blocker is still missing live data wiring.</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Waiting on Derek</strong>
-              <span role="cell">≤2</span>
-              <span role="cell">3</span>
-              <span role="cell"><span class="dot warn"></span>high</span>
-              <span role="cell">This page should reduce decision scatter.</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Active agents</strong>
-              <span role="cell">2–4</span>
-              <span role="cell">2</span>
-              <span role="cell"><span class="dot good"></span>healthy</span>
-              <span role="cell">Enough parallelism without coordination noise.</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Decision latency</strong>
-              <span role="cell">&lt;24h</span>
-              <span role="cell">&lt;24h</span>
-              <span role="cell"><span class="dot good"></span>on target</span>
-              <span role="cell">Short, explicit asks keep this down.</span>
-            </div>
-            <div class="kpi-row" role="row">
-              <strong role="cell">Noise score</strong>
-              <span role="cell">low</span>
-              <span role="cell">low</span>
-              <span role="cell"><span class="dot good"></span>steady</span>
-              <span role="cell">Dense layout, no filler, no fake live widgets.</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel stack-section" id="roster">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Roster</p>
-              <h2>Agents</h2>
+              <p class="eyebrow">Operator snapshot</p>
+              <h2>What this surface is optimized for</h2>
             </div>
           </div>
 
-          <div class="roster-grid" role="list" aria-label="Agent roster">
-            <article class="roster-card" role="listitem">
-              <div class="roster-top">
-                <strong>Coco main</strong>
-                <span class="status-tag status-good">active</span>
+          <div class="ops-grid">
+            <article class="ops-card">
+              <span class="ops-index">01</span>
+              <div>
+                <strong>Human ask is explicit or absent.</strong>
+                <p>If Derek is not needed, the card says so and Coco remains the owner.</p>
               </div>
-              <p>Runs orchestration, decides what stays agent-owned, escalates only real human-owned choices.</p>
             </article>
-            <article class="roster-card" role="listitem">
-              <div class="roster-top">
-                <strong>Execution agents</strong>
-                <span class="status-tag">on demand</span>
+            <article class="ops-card">
+              <span class="ops-index">02</span>
+              <div>
+                <strong>Buttons map to a real submit path.</strong>
+                <p>Cloudflare Pages Functions + D1 is the smallest durable backend path that fits this repo.</p>
               </div>
-              <p>Take narrow implementation tasks, return validated results, avoid broad coordination overhead.</p>
             </article>
-            <article class="roster-card" role="listitem">
-              <div class="roster-top">
-                <strong>State exporter</strong>
-                <span class="status-tag status-warn">planned</span>
+            <article class="ops-card">
+              <span class="ops-index">03</span>
+              <div>
+                <strong>Compact, dense, operator-console style.</strong>
+                <p>No landing-page fluff. No fake live widgets. No meta prompts asking Derek to design the dashboard.</p>
               </div>
-              <p>Future static JSON or generated HTML path for real asks, KPI values, and status snapshots.</p>
             </article>
           </div>
         </section>
       </main>
 
       <footer class="footer-bar">
-        <span>static html/css</span>
-        <span>cloudflare pages ready</span>
-        <span><a href="/state/">open /state</a></span>
+        <span>plain html + css + small js</span>
+        <span>pages functions ready</span>
+        <span><a href="/api/decisions">open api</a></span>
       </footer>
     </div>
+
+    <script type="module" src="/app.js"></script>
   </body>
 </html>
