@@ -3,223 +3,271 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coco — Less Chat. More Shipped.</title>
+    <title>Coco — Derek's Operator Dashboard</title>
     <meta
       name="description"
-      content="Coco is an autonomous AI partner for people who want signal over theater — turning messy intent into shipped work."
+      content="Static operator dashboard for Derek: inbox, state, goals, agents, and KPIs without landing-page theater."
     />
-    <meta property="og:title" content="Coco — Less Chat. More Shipped." />
+    <meta property="og:title" content="Coco — Derek's Operator Dashboard" />
     <meta
       property="og:description"
-      content="Sharp, proactive, low-noise. Coco turns messy intent into shipped work."
+      content="A static operator surface for Derek with a clear inbox and a /state view."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#16110f" />
+    <meta name="theme-color" content="#0d1216" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;600;700;900&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="Coco home">
+    <div class="site-frame">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Coco home">
           <span class="brand-mark">C</span>
-          <span class="brand-lockup">
+          <span class="brand-copy">
             <span class="brand-name">COCO</span>
-            <span class="brand-tag">autonomous AI partner</span>
+            <span class="brand-subtitle">operator desk for Derek</span>
           </span>
         </a>
 
-        <div class="header-right">
-          <span class="status-chip">signal &gt; theater</span>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="#about">About</a>
-            <a href="#approach">Approach</a>
-            <a href="#status">Status</a>
-          </nav>
-        </div>
+        <nav class="topnav" aria-label="Primary">
+          <a href="#inbox">Need from Derek</a>
+          <a href="#snapshot">Snapshot</a>
+          <a href="/state/">/state</a>
+          <a href="https://github.com/i-am-coco/coco-web" target="_blank" rel="noreferrer">Repo</a>
+        </nav>
       </header>
 
-      <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-intro">
-            <p class="eyebrow">FIELD MANUAL 01 / BUILT FOR PEOPLE WHO HATE HANDHOLDING</p>
-            <h1 id="hero-title">
-              <span>Less chat.</span>
-              <span>More shipped.</span>
-            </h1>
-            <p class="hero-text">
-              Coco turns vague intent into organized execution — finding the constraint,
-              moving the work, and pulling a human in only when the decision is genuinely
-              human-owned.
-            </p>
+      <main class="dashboard-shell">
+        <section class="panel intro-panel">
+          <p class="panel-label">Coco / operator dashboard</p>
+          <h1>Derek's working surface, not a landing page.</h1>
+          <p class="lead">
+            This site exists so Coco has one clean place to ask Derek for decisions, context,
+            or review. Everything else should stay agent-owned.
+          </p>
 
-            <div class="hero-actions">
-              <a class="button primary" href="#about">Meet Coco</a>
-              <a
-                class="button secondary"
-                href="https://github.com/i-am-coco/coco-web"
-                target="_blank"
-                rel="noreferrer"
-                >View repo</a
-              >
-            </div>
-
-            <dl class="hero-facts" aria-label="Coco highlights">
-              <div>
-                <dt>Default move</dt>
-                <dd>Find the bottleneck</dd>
-              </div>
-              <div>
-                <dt>Communication</dt>
-                <dd>Tight and intentional</dd>
-              </div>
-              <div>
-                <dt>Bias</dt>
-                <dd>Evidence over theater</dd>
-              </div>
-            </dl>
-          </div>
-
-          <aside class="hero-poster" aria-label="Coco poster">
-            <p class="poster-label">COCO / SIGNAL ISSUE</p>
-            <div class="poster-core">
-              <span>SIGNAL</span>
-              <span>WITHOUT</span>
-              <span>THEATER</span>
-            </div>
-            <p class="poster-footnote">
-              Sharp. Proactive. Low-noise. Built to turn intent into shipped work.
-            </p>
-          </aside>
-
-          <aside class="hero-note" aria-label="Coco operating posture">
-            <p class="note-label">OPERATOR'S NOTE</p>
-            <blockquote>
-              “Own the work, not just the conversation.”
-            </blockquote>
-            <ul>
-              <li>Compress ambiguity into clear next actions.</li>
-              <li>Keep systems light enough to stay useful.</li>
-              <li>Escalate only when the human actually matters.</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section class="signal-strip" aria-label="Coco principles">
-          <span>find the constraint</span>
-          <span>ship proof</span>
-          <span>compress knowledge</span>
-          <span>keep the stack light</span>
-          <span>protect human attention</span>
-        </section>
-
-        <section class="manifesto" id="about">
-          <div class="section-heading">
-            <p class="section-kicker">Why this feels different</p>
-            <h2>An operator disguised as a homepage.</h2>
-          </div>
-
-          <div class="manifesto-grid">
-            <article class="manifesto-card manifesto-card-large">
-              <p class="card-kicker">NOT ANOTHER AI LANDING PAGE</p>
-              <h3>
-                Coco is built for people who want less reassurance, fewer dashboards, and more real
-                movement.
-              </h3>
-              <p>
-                The point is not to sound smart. The point is to clarify the work, own the next
-                move, and leave behind cleaner systems than were there before.
-              </p>
+          <div class="signal-grid" aria-label="Operating facts">
+            <article>
+              <span>Default owner</span>
+              <strong>Coco</strong>
             </article>
-
-            <article class="manifesto-card">
-              <p class="card-kicker">POSTURE</p>
-              <h3>High-signal by default.</h3>
-              <p>
-                Coco is concise on the surface and thorough underneath — calm when things are fuzzy,
-                direct when a choice matters, and allergic to status theater.
-              </p>
+            <article>
+              <span>Human escalation</span>
+              <strong>Only real decisions</strong>
             </article>
-
-            <article class="manifesto-card accent-card">
-              <p class="card-kicker">WHAT STICKS</p>
-              <p class="accent-line">Sharp judgment.</p>
-              <p class="accent-line">Tangible output.</p>
-              <p class="accent-line">Minimal noise.</p>
+            <article>
+              <span>Deployment</span>
+              <strong>Static on Pages</strong>
             </article>
           </div>
         </section>
 
-        <section class="systems" id="approach">
-          <div class="section-heading split-heading">
+        <aside class="panel meta-panel">
+          <div class="meta-stack">
             <div>
-              <p class="section-kicker">Operating loop</p>
-              <h2>Coco moves in three beats.</h2>
+              <p class="panel-label">Current mode</p>
+              <strong class="meta-value">manual snapshot</strong>
+              <p class="muted">Static placeholders now; easy to wire to live state later.</p>
             </div>
-            <p class="section-text">
-              Not magic. Not handholding. Just a disciplined loop for turning intent into traction.
-            </p>
+
+            <div class="meta-blocks">
+              <article>
+                <span>Last sync</span>
+                <strong>Manual / placeholder</strong>
+              </article>
+              <article>
+                <span>Primary route</span>
+                <strong><a href="/state/">/state</a></strong>
+              </article>
+              <article>
+                <span>Signal policy</span>
+                <strong>short asks, clear owners</strong>
+              </article>
+            </div>
+          </div>
+        </aside>
+
+        <section class="panel inbox-panel" id="inbox">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Need from Derek</p>
+              <h2>Inbox</h2>
+            </div>
+            <span class="pill pill-alert">3 open</span>
           </div>
 
-          <div class="systems-grid">
-            <article class="system-card" data-step="01">
-              <h3>Clarify</h3>
-              <p>
-                Untangle goals, constraints, ownership, and missing context until the next move is
-                obvious.
-              </p>
+          <p class="panel-copy">
+            These are example request shapes for now. Replace them with real asks once the data
+            source is wired.
+          </p>
+
+          <ol class="task-list">
+            <li>
+              <div>
+                <span class="task-kind">Decision</span>
+                <h3>Confirm this dashboard structure as the default human-facing surface.</h3>
+                <p>
+                  Homepage = inbox + operating snapshot. <code>/state</code> = goals, agents, KPIs,
+                  blockers.
+                </p>
+              </div>
+              <span class="task-meta">today</span>
+            </li>
+            <li>
+              <div>
+                <span class="task-kind">Review</span>
+                <h3>Choose the KPI set Derek actually wants to glance at.</h3>
+                <p>
+                  Current placeholders: shipped work, active agents, blockers, waiting-on-human,
+                  decision latency.
+                </p>
+              </div>
+              <span class="task-meta">15 min</span>
+            </li>
+            <li>
+              <div>
+                <span class="task-kind">Input</span>
+                <h3>Add standing goals Derek wants pinned across the week.</h3>
+                <p>
+                  Example: revenue, product quality, outreach, automation reliability, calendar
+                  protection.
+                </p>
+              </div>
+              <span class="task-meta">async</span>
+            </li>
+          </ol>
+
+          <div class="inbox-footer">
+            <span>Reply format works best as:</span>
+            <strong>A/B/C or one short sentence</strong>
+          </div>
+        </section>
+
+        <section class="panel focus-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Operating today</p>
+              <h2>Main loop</h2>
+            </div>
+          </div>
+
+          <div class="focus-list">
+            <article>
+              <span>Top goal</span>
+              <strong>Keep Derek-facing ops high-signal</strong>
             </article>
-            <article class="system-card" data-step="02">
-              <h3>Execute</h3>
-              <p>
-                Use the lightest stack that solves the problem well, then ship practical work with
-                evidence.
-              </p>
+            <article>
+              <span>Current constraint</span>
+              <strong>No live state feed yet</strong>
             </article>
-            <article class="system-card" data-step="03">
-              <h3>Compound</h3>
-              <p>
-                Turn repeated effort into docs, checklists, systems, and cleaner operating memory.
-              </p>
+            <article>
+              <span>Next Coco move</span>
+              <strong>Wire real asks + state snapshot into this shell</strong>
+            </article>
+            <article>
+              <span>Escalate only if</span>
+              <strong>a choice is genuinely human-owned</strong>
             </article>
           </div>
         </section>
 
-        <section class="status-section" id="status">
-          <div class="status-copy">
-            <p class="section-kicker">Current site</p>
-            <h2>Static by choice. Fast by default.</h2>
-            <p>
-              Plain HTML and CSS, no framework gravity, no backend obligations — just a sharp front
-              door for Coco that stays easy to deploy on Cloudflare Pages.
-            </p>
+        <section class="panel snapshot-panel" id="snapshot">
+          <div class="panel-head panel-head-spread">
+            <div>
+              <p class="panel-label">Snapshot</p>
+              <h2>State preview</h2>
+            </div>
+            <a class="button-link" href="/state/">Open full /state</a>
           </div>
 
-          <div class="status-card" aria-label="Site facts">
-            <div class="status-row">
-              <span>Stack</span>
-              <strong>HTML + CSS</strong>
-            </div>
-            <div class="status-row">
-              <span>Build step</span>
-              <strong>None</strong>
-            </div>
-            <div class="status-row">
-              <span>Runtime deps</span>
-              <strong>Zero</strong>
-            </div>
-            <div class="status-row">
-              <span>Deploy target</span>
-              <strong>Cloudflare Pages</strong>
+          <div class="snapshot-grid">
+            <article class="snapshot-card">
+              <span class="snapshot-label">Goals</span>
+              <ul>
+                <li>Concentrate all Derek asks into one inbox surface.</li>
+                <li>Expose live priorities without dashboard bloat.</li>
+                <li>Stay static until a real data source earns complexity.</li>
+              </ul>
+            </article>
+            <article class="snapshot-card">
+              <span class="snapshot-label">Agents</span>
+              <ul>
+                <li>Coco main — orchestration and decisions</li>
+                <li>Execution agents — narrow implementation tasks</li>
+                <li>Future state exporter — static JSON or generated HTML</li>
+              </ul>
+            </article>
+            <article class="snapshot-card">
+              <span class="snapshot-label">KPIs</span>
+              <ul>
+                <li>Shipped outputs this week</li>
+                <li>Open blockers</li>
+                <li>Waiting on Derek</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel workstreams-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Active workstreams</p>
+              <h2>What this site should hold</h2>
             </div>
           </div>
+
+          <div class="stacked-cards">
+            <article>
+              <span>01</span>
+              <div>
+                <strong>Inbox</strong>
+                <p>The exact things Coco needs from Derek, with clear ownership and urgency.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <strong>State</strong>
+                <p>Live goals, agent roster, KPIs, blockers, and next actions in one glance.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <strong>Context</strong>
+                <p>Minimal notes that reduce back-and-forth without turning into a bloated portal.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel rules-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Operating rules</p>
+              <h2>Keep it sharp</h2>
+            </div>
+          </div>
+
+          <ul class="rule-list">
+            <li>No public-facing marketing voice.</li>
+            <li>No unnecessary widgets or fake “live” theater.</li>
+            <li>Every ask should have an owner, reason, and next move.</li>
+            <li>Static first. Add data plumbing only when it becomes obviously useful.</li>
+          </ul>
         </section>
       </main>
+
+      <footer class="footer-bar">
+        <span>Static HTML/CSS</span>
+        <span>Cloudflare Pages ready</span>
+        <span>No build step</span>
+      </footer>
     </div>
   </body>
 </html>

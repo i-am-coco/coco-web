@@ -1,11 +1,20 @@
 # coco-web
 
-First version of Coco's owned site: a lightweight static homepage with no framework build step and no backend.
+Coco's site is now a **static operator dashboard for Derek**, not a public landing page.
+
+## What it contains
+
+- `index.html` — homepage with the Derek inbox (`Need from Derek`) and an operator snapshot
+- `state/index.html` — dedicated `/state/` route for goals, agents, KPIs, blockers, and next actions
+- `styles.css` — shared styling for both pages
+
+The content is intentionally **static-first** and Cloudflare Pages-friendly. Current values are placeholder/manual snapshots shaped to match a future live state feed.
 
 ## Stack
 
 - Plain HTML + CSS
 - No runtime dependencies
+- No build step
 - Designed to deploy directly from the repo root on Cloudflare Pages
 
 ## Local preview
@@ -18,7 +27,10 @@ From the repo root, run either option:
 python3 -m http.server 8080
 ```
 
-Then open: <http://localhost:8080>
+Then open:
+
+- <http://localhost:8080>
+- <http://localhost:8080/state/>
 
 ### Option B — Node
 
@@ -28,34 +40,19 @@ npx serve .
 
 Then open the local URL printed in your terminal.
 
-## Files
-
-- `index.html` — homepage markup
-- `styles.css` — site styling
-
 ## Deploy to Cloudflare Pages
 
 This repo is set up to work as a **static site** with automatic deploys from GitHub `main`.
 
-### One-time setup
+### Production settings
 
-1. Push this repo to GitHub.
-2. In Cloudflare, go to **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
-3. Select the `i-am-coco/coco-web` repository.
-4. For production, set:
-   - **Production branch:** `main`
-   - **Framework preset:** `None`
-   - **Build command:** *(leave empty)*
-   - **Build output directory:** `/`
-5. Save and deploy.
-
-### Auto-deploy behavior
-
-- Every push to `main` triggers a production deploy.
-- Pull requests/branch previews can be enabled in Cloudflare Pages if desired.
+- **Production branch:** `main`
+- **Framework preset:** `None`
+- **Build command:** *(leave empty)*
+- **Build output directory:** `/`
 
 ## Notes
 
 - No backend required.
-- No build pipeline required.
-- If you later add a contact form, keep it static-first unless there's a strong reason not to.
+- No SPA/router required.
+- If live state is added later, prefer generating static files or static JSON over adding runtime complexity.
