@@ -3,251 +3,226 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coco /state — Operator Snapshot</title>
+    <title>Coco /state — Operator Console</title>
     <meta
       name="description"
-      content="Static /state snapshot for Derek: goals, agents, KPIs, blockers, and next actions."
+      content="Compact /state snapshot for Derek: human input needed, priorities, KPI goals vs current values, and roster."
     />
-    <meta property="og:title" content="Coco /state — Operator Snapshot" />
+    <meta property="og:title" content="Coco /state — Operator Console" />
     <meta
       property="og:description"
-      content="Goals, agents, KPIs, blockers, and next actions for Coco's operator dashboard."
+      content="Compact /state view with immediate asks, live priorities, KPI table, and agent roster."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0d1216" />
+    <meta name="theme-color" content="#0a0f13" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="site-frame site-frame-state">
+    <div class="site-frame">
       <header class="topbar">
         <a class="brand" href="/" aria-label="Coco home">
           <span class="brand-mark">C</span>
           <span class="brand-copy">
             <span class="brand-name">COCO</span>
-            <span class="brand-subtitle">operator desk for Derek</span>
+            <span class="brand-subtitle">/state / derek</span>
           </span>
         </a>
 
         <nav class="topnav" aria-label="Primary">
           <a href="/">Home</a>
-          <a href="#goals">Goals</a>
-          <a href="#agents">Agents</a>
+          <a href="#need">Need</a>
+          <a href="#priorities">Priorities</a>
           <a href="#kpis">KPIs</a>
+          <a href="#roster">Roster</a>
         </nav>
       </header>
 
-      <main class="state-shell">
-        <section class="panel state-hero">
-          <p class="panel-label">/state · manual snapshot</p>
-          <h1>Current goals, agents, KPIs, and blockers.</h1>
-          <p class="lead">
-            This is the concise operating view Derek should be able to scan in seconds. It is
-            static for now, but the structure is ready for a generated feed later.
-          </p>
+      <main class="console-shell console-shell-state">
+        <section class="panel stack-section need-panel" id="need">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">/state · need from Derek</p>
+              <h1>Current human-owned items</h1>
+            </div>
+            <span class="status-tag status-alert">3 open</span>
+          </div>
 
-          <div class="signal-grid signal-grid-wide" aria-label="State facts">
-            <article>
-              <span>Source</span>
-              <strong>static placeholder</strong>
+          <div class="queue-list" role="list" aria-label="Current asks for Derek">
+            <article class="queue-item" role="listitem">
+              <div class="queue-meta-block">
+                <span class="queue-kind">Decision</span>
+                <span class="queue-age">today</span>
+              </div>
+              <div class="queue-main">
+                <h2>Approve compact operator-console IA as the default surface.</h2>
+                <p>Keeps the top of the page reserved for actual human decisions instead of intro framing.</p>
+              </div>
             </article>
-            <article>
-              <span>Update cadence</span>
-              <strong>manual until automated</strong>
+            <article class="queue-item" role="listitem">
+              <div class="queue-meta-block">
+                <span class="queue-kind">Input</span>
+                <span class="queue-age">15 min</span>
+              </div>
+              <div class="queue-main">
+                <h2>Confirm the KPI set that deserves permanent placement.</h2>
+                <p>Until then, values stay placeholder but the structure is final and ready for generated data.</p>
+              </div>
             </article>
-            <article>
-              <span>Primary use</span>
-              <strong>scan, decide, move</strong>
-            </article>
-            <article>
-              <span>Escalation rule</span>
-              <strong>only human-owned choices</strong>
+            <article class="queue-item" role="listitem">
+              <div class="queue-meta-block">
+                <span class="queue-kind">Review</span>
+                <span class="queue-age">async</span>
+              </div>
+              <div class="queue-main">
+                <h2>Pin the weekly priorities Derek wants shown without extra commentary.</h2>
+                <p>This should become the stable short list above KPI tracking.</p>
+              </div>
             </article>
           </div>
         </section>
 
-        <section class="state-grid">
-          <article class="panel" id="goals">
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Goals</p>
-                <h2>Live priorities</h2>
-              </div>
+        <section class="panel stack-section" id="priorities">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Live priorities</p>
+              <h2>State focus</h2>
             </div>
+            <span class="status-tag">manual snapshot</span>
+          </div>
 
-            <div class="data-table">
-              <div class="data-row data-head">
-                <span>Goal</span>
-                <span>Owner</span>
-                <span>Horizon</span>
-                <span>Next action</span>
+          <div class="priority-list" role="list" aria-label="Live priorities">
+            <article class="priority-row" role="listitem">
+              <span class="priority-index">01</span>
+              <div class="priority-main">
+                <strong>Replace static asks with generated state output when it is worth the plumbing.</strong>
+                <p>Current constraint: all values still require manual updates.</p>
               </div>
-              <div class="data-row">
-                <strong>Centralize Derek asks into one clean inbox</strong>
-                <span>Coco</span>
-                <span>This week</span>
-                <span>Wire live asks into homepage inbox.</span>
+              <span class="priority-status">active</span>
+            </article>
+            <article class="priority-row" role="listitem">
+              <span class="priority-index">02</span>
+              <div class="priority-main">
+                <strong>Keep Derek-facing state dense and direct.</strong>
+                <p>No landing-page framing, no decorative copy, no buried asks.</p>
               </div>
-              <div class="data-row">
-                <strong>Expose useful state without dashboard clutter</strong>
-                <span>Coco</span>
-                <span>Now</span>
-                <span>Keep <code>/state</code> terse and scan-friendly.</span>
+              <span class="priority-status">active</span>
+            </article>
+            <article class="priority-row" role="listitem">
+              <span class="priority-index">03</span>
+              <div class="priority-main">
+                <strong>Preserve Pages-compatible static deployment.</strong>
+                <p>Prefer scheduled generation over runtime complexity.</p>
               </div>
-              <div class="data-row">
-                <strong>Preserve static deploy simplicity</strong>
-                <span>Coco</span>
-                <span>Ongoing</span>
-                <span>Add generated data only if it stays Pages-friendly.</span>
+              <span class="priority-status priority-status-muted">guardrail</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section" id="kpis">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">KPIs</p>
+              <h2>Goal vs current</h2>
+            </div>
+          </div>
+
+          <div class="kpi-table" role="table" aria-label="KPI table">
+            <div class="kpi-row kpi-head" role="row">
+              <span role="columnheader">Metric</span>
+              <span role="columnheader">Goal</span>
+              <span role="columnheader">Current</span>
+              <span role="columnheader">Status</span>
+              <span role="columnheader">Note</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Shipped outputs / week</strong>
+              <span role="cell">5+</span>
+              <span role="cell">4</span>
+              <span role="cell"><span class="dot good"></span>close</span>
+              <span role="cell">One more meaningful ship clears target.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Open blockers</strong>
+              <span role="cell">0–1</span>
+              <span role="cell">1</span>
+              <span role="cell"><span class="dot good"></span>within range</span>
+              <span role="cell">Primary blocker is still live data automation.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Waiting on Derek</strong>
+              <span role="cell">≤2</span>
+              <span role="cell">3</span>
+              <span role="cell"><span class="dot warn"></span>high</span>
+              <span role="cell">The top section exists to cut this back down.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Active agents</strong>
+              <span role="cell">2–4</span>
+              <span role="cell">2</span>
+              <span role="cell"><span class="dot good"></span>healthy</span>
+              <span role="cell">Enough execution capacity without dashboard noise.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Decision latency</strong>
+              <span role="cell">&lt;24h</span>
+              <span role="cell">&lt;24h</span>
+              <span role="cell"><span class="dot good"></span>on target</span>
+              <span role="cell">Depends on explicit asks staying at the top.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Noise score</strong>
+              <span role="cell">low</span>
+              <span role="cell">low</span>
+              <span role="cell"><span class="dot good"></span>steady</span>
+              <span role="cell">Compact IA removed the old landing-page feel.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel stack-section" id="roster">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Roster</p>
+              <h2>Active agents</h2>
+            </div>
+          </div>
+
+          <div class="roster-grid" role="list" aria-label="Agent roster">
+            <article class="roster-card" role="listitem">
+              <div class="roster-top">
+                <strong>Coco main</strong>
+                <span class="status-tag status-good">active</span>
               </div>
-            </div>
-          </article>
-
-          <article class="panel" id="agents">
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Agents</p>
-                <h2>Roster</h2>
+              <p>Owns orchestration, trims noise, and keeps human asks explicit.</p>
+            </article>
+            <article class="roster-card" role="listitem">
+              <div class="roster-top">
+                <strong>Execution agents</strong>
+                <span class="status-tag">on demand</span>
               </div>
-            </div>
-
-            <div class="agent-list">
-              <article>
-                <div>
-                  <span class="agent-name">Coco main</span>
-                  <p>Orchestrates work, escalates only when Derek matters.</p>
-                </div>
-                <span class="status-dot status-good">active</span>
-              </article>
-              <article>
-                <div>
-                  <span class="agent-name">Execution agents</span>
-                  <p>Handle narrow implementation tasks and return results upward.</p>
-                </div>
-                <span class="status-dot">on demand</span>
-              </article>
-              <article>
-                <div>
-                  <span class="agent-name">State exporter</span>
-                  <p>Not built yet. Likely future JSON → static page generation path.</p>
-                </div>
-                <span class="status-dot status-warn">planned</span>
-              </article>
-            </div>
-          </article>
-
-          <article class="panel kpi-panel" id="kpis">
-            <div class="panel-head panel-head-spread">
-              <div>
-                <p class="panel-label">KPIs</p>
-                <h2>Operator pulse</h2>
+              <p>Implement narrow tasks and return finished work instead of partial status chatter.</p>
+            </article>
+            <article class="roster-card" role="listitem">
+              <div class="roster-top">
+                <strong>State exporter</strong>
+                <span class="status-tag status-warn">planned</span>
               </div>
-              <span class="pill">placeholder values</span>
-            </div>
-
-            <div class="kpi-grid">
-              <article>
-                <span>Shipped this week</span>
-                <strong>04</strong>
-              </article>
-              <article>
-                <span>Open blockers</span>
-                <strong>01</strong>
-              </article>
-              <article>
-                <span>Waiting on Derek</span>
-                <strong>03</strong>
-              </article>
-              <article>
-                <span>Active agents</span>
-                <strong>02</strong>
-              </article>
-              <article>
-                <span>Decision latency</span>
-                <strong>&lt; 24h</strong>
-              </article>
-              <article>
-                <span>Noise score</span>
-                <strong>low</strong>
-              </article>
-            </div>
-          </article>
-
-          <article class="panel constraint-panel">
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Constraint</p>
-                <h2>Main blocker</h2>
-              </div>
-            </div>
-
-            <div class="constraint-stack">
-              <article>
-                <span>Current bottleneck</span>
-                <strong>No live data feed into the dashboard yet.</strong>
-              </article>
-              <article>
-                <span>Why it matters</span>
-                <strong>Without automation, asks and KPIs must be manually updated.</strong>
-              </article>
-              <article>
-                <span>Best next step</span>
-                <strong>Generate static JSON or HTML from OpenClaw state on a schedule.</strong>
-              </article>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Recent decisions</p>
-                <h2>Short log</h2>
-              </div>
-            </div>
-
-            <ul class="timeline-list">
-              <li>
-                <span>Now</span>
-                <p>Reframed the site from public promo page to internal operator dashboard.</p>
-              </li>
-              <li>
-                <span>Now</span>
-                <p>Added a dedicated <code>/state</code> route for goals, agents, and KPIs.</p>
-              </li>
-              <li>
-                <span>Next</span>
-                <p>Replace placeholders with generated state data when it is worth the plumbing.</p>
-              </li>
-            </ul>
-          </article>
-
-          <article class="panel">
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Wiring later</p>
-                <h2>Easy next integration path</h2>
-              </div>
-            </div>
-
-            <ul class="rule-list">
-              <li>Export a compact <code>state.json</code> during a scheduled job or deploy step.</li>
-              <li>Render the inbox and KPI values from that file into static HTML.</li>
-              <li>Keep Pages deployment simple: no backend, no runtime auth surface, no SPA needs.</li>
-              <li>Only add complexity when it produces a meaningfully better operator loop.</li>
-            </ul>
-          </article>
+              <p>Next likely addition: scheduled generation of asks, priorities, and KPI values into static output.</p>
+            </article>
+          </div>
         </section>
       </main>
 
       <footer class="footer-bar">
-        <span><a href="/">Back home</a></span>
-        <span>Static route: /state/</span>
-        <span>Ready for generated data later</span>
+        <span><a href="/">back home</a></span>
+        <span>same IA as home</span>
+        <span>static route /state/</span>
       </footer>
     </div>
   </body>
