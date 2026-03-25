@@ -35,7 +35,7 @@ function rememberLocalFallback(entry) {
 }
 
 function escapeHtml(value = "") {
-  return value
+  return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -59,6 +59,34 @@ function getLastKnownDecision(cardId) {
   return latestRemoteByCard[cardId] || localFallback.find((entry) => entry.cardId === cardId) || null;
 }
 
+function renderChoiceButtons(card) {
+  return Object.entries(card.options)
+    .map(
+      ([key, option]) => `
+        <button type="button" class="choice-button" data-choice-key="${escapeHtml(key)}">
+          <div class="choice-topline">
+            <span class="choice-key">${escapeHtml(key.toUpperCase())}</span>
+            <span class="choice-title">${escapeHtml(option.label)}</span>
+          </div>
+          <span class="choice-detail">${escapeHtml(option.detail)}</span>
+        </button>
+      `
+    )
+    .join("");
+}
+
+function renderSupportLinks(card) {
+  return card.links
+    .map(
+      (link) => `
+        <a href="${escapeHtml(link.href)}" target="_blank" rel="noreferrer">
+          ${escapeHtml(link.label)}
+        </a>
+      `
+    )
+    .join("");
+}
+
 function renderInbox() {
   if (!inboxRoot) return;
 
@@ -69,10 +97,13 @@ function renderInbox() {
         ? `${lastDecision.source === "local" ? "local only" : "saved"} · ${escapeHtml(lastDecision.choiceLabel || "Other")} · ${escapeHtml(formatTimestamp(lastDecision.createdAt))}`
         : "No response captured yet";
 
+      const askCopy =
+        card.humanAsk || "No immediate human action required. Coco owns follow-through unless Derek disagrees.";
+
       return `
         <article class="artifact-card" data-card-id="${escapeHtml(card.id)}">
           <div class="artifact-top">
-            <div>
+            <div class="artifact-heading">
               <p class="artifact-kind">${escapeHtml(card.kind)}</p>
               <h2>${escapeHtml(card.title)}</h2>
             </div>
@@ -82,43 +113,45 @@ function renderInbox() {
             </div>
           </div>
 
-          <p class="artifact-why">${escapeHtml(card.why)}</p>
+          <div class="artifact-flow">
+            <section class="artifact-section artifact-section-ask" aria-label="What I need from Derek">
+              <p class="artifact-section-label">What I need from Derek</p>
+              <p class="artifact-section-copy artifact-section-copy-strong">${escapeHtml(askCopy)}</p>
+            </section>
 
-          <dl class="artifact-meta">
-            <div>
-              <dt>links</dt>
-              <dd>
+            <section class="artifact-section" aria-label="Why this matters">
+              <p class="artifact-section-label">Why this matters</p>
+              <p class="artifact-section-copy">${escapeHtml(card.why)}</p>
+            </section>
+
+            <section class="artifact-section artifact-section-options" aria-label="Options">
+              <div class="artifact-section-head">
+                <p class="artifact-section-label">Options</p>
+                <p class="artifact-section-note">Buttons submit immediately.</p>
+              </div>
+              <div class="choice-grid" role="group" aria-label="Choices for ${escapeHtml(card.title)}">
+                ${renderChoiceButtons(card)}
+              </div>
+            </section>
+
+            <section class="artifact-section artifact-section-brief" aria-label="Read brief">
+              <div class="artifact-section-head">
+                <p class="artifact-section-label">Read brief</p>
+                <p class="artifact-section-note">Why this decision exists + suggested paths.</p>
+              </div>
+
+              <div class="brief-callout">
+                <a class="brief-link" href="${escapeHtml(card.brief.href)}" target="_blank" rel="noreferrer">
+                  ${escapeHtml(card.brief.label)}
+                </a>
                 <div class="artifact-links">
-                  ${card.links
-                    .map(
-                      (link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`
-                    )
-                    .join("")}
+                  ${renderSupportLinks(card)}
                 </div>
-              </dd>
-            </div>
-            <div>
-              <dt>human ask</dt>
-              <dd>${escapeHtml(
-                card.humanAsk || "No immediate human action required. Coco owns follow-through by default."
-              )}</dd>
-            </div>
-          </dl>
+              </div>
+            </section>
+          </div>
 
           <div class="artifact-actions">
-            <div class="choice-grid" role="group" aria-label="Choices for ${escapeHtml(card.title)}">
-              ${Object.entries(card.options)
-                .map(
-                  ([key, label]) => `
-                    <button type="button" class="choice-button" data-choice-key="${escapeHtml(key)}">
-                      <span class="choice-key">${escapeHtml(key.toUpperCase())}</span>
-                      <span class="choice-label">${escapeHtml(label)}</span>
-                    </button>
-                  `
-                )
-                .join("")}
-            </div>
-
             <div class="other-row">
               <label class="sr-only" for="other-${escapeHtml(card.id)}">Other response</label>
               <input
@@ -128,7 +161,7 @@ function renderInbox() {
                 maxlength="600"
                 placeholder="Other / override / note"
               />
-              <button type="button" class="other-submit">send other</button>
+              <button type="button" class="other-submit">Send custom response</button>
             </div>
 
             <p class="submission-status" aria-live="polite">${lastStatus}</p>
@@ -153,7 +186,7 @@ function renderResponseLog(recent = []) {
     responseLog.innerHTML = `
       <div class="log-empty">
         <strong>No captured responses yet.</strong>
-        <p>As soon as Derek taps A/B/C here, the result lands in the log. If D1 is not bound yet, the browser marks the save as local-only.</p>
+        <p>As soon as Derek taps an option here, the result lands in the log. If D1 is not bound yet, the browser marks the save as local-only.</p>
       </div>
     `;
     return;
@@ -237,7 +270,7 @@ async function submitDecision(cardId, choiceKey, note = "") {
     return;
   }
 
-  const choiceLabel = choiceKey === "other" ? "Other" : card.options[choiceKey];
+  const choiceLabel = choiceKey === "other" ? "Other" : card.options[choiceKey]?.label;
   setCardStatus(cardId, "Saving…");
 
   try {

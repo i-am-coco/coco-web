@@ -36,37 +36,42 @@
 
         <nav class="topnav" aria-label="Primary">
           <a href="/">Inbox</a>
-          <a href="#focus">Focus</a>
+          <a href="#overview">Overview</a>
           <a href="#kpis">KPIs</a>
-          <a href="#agents">Agents</a>
+          <a href="#roles">Roles</a>
         </nav>
       </header>
 
       <main class="console-shell">
-        <section class="panel stack-section state-panel">
+        <section class="panel stack-section state-panel" id="overview">
           <div class="section-head">
             <div>
               <p class="eyebrow">/state</p>
-              <h1>Operator snapshot</h1>
+              <h1>Orientation, not decision capture.</h1>
             </div>
             <span class="status-tag status-good">home owns input</span>
           </div>
 
-          <div class="state-grid">
+          <div class="state-grid state-grid-balanced">
             <article class="state-card">
-              <span class="state-label">human input</span>
-              <strong>Derek decisions live on home now, not here.</strong>
-              <p>The top of the site is reserved for artifact review cards with A/B/C capture and a real save path.</p>
+              <span class="state-label">what this page is for</span>
+              <strong>Give Derek the operating picture fast.</strong>
+              <p>Use this route to understand current posture, not to answer live A/B/C asks.</p>
             </article>
             <article class="state-card">
-              <span class="state-label">storage path</span>
-              <strong>Pages Functions + D1</strong>
-              <p>Smallest durable backend path for this repo. If the D1 binding is absent, the home screen shows that gap explicitly.</p>
+              <span class="state-label">why it matters</span>
+              <strong>Separates orientation from action.</strong>
+              <p>Keeping status here prevents the decision inbox from turning back into a mixed pile of context and asks.</p>
+            </article>
+            <article class="state-card state-card-accent">
+              <span class="state-label">read brief</span>
+              <strong>Why /state exists and what it should exclude.</strong>
+              <p><a class="brief-link brief-link-inline" href="/briefs/operator-surface.html">Open operator-surface brief</a></p>
             </article>
             <article class="state-card">
-              <span class="state-label">notification gap</span>
-              <strong>Still silent after save.</strong>
-              <p>This repo can capture input, but it still does not emit Telegram or other push notifications on decision arrival.</p>
+              <span class="state-label">current open gap</span>
+              <strong>Saved decisions still do not notify Derek elsewhere.</strong>
+              <p>The storage path can work, but Telegram or other push notification plumbing is still missing.</p>
             </article>
           </div>
         </section>
@@ -74,8 +79,8 @@
         <section class="panel stack-section" id="focus">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Focus</p>
-              <h2>Current rules</h2>
+              <p class="eyebrow">Current rules</p>
+              <h2>How the surface is supposed to behave</h2>
             </div>
           </div>
 
@@ -83,22 +88,22 @@
             <article class="ops-card">
               <span class="ops-index">01</span>
               <div>
-                <strong>Top section is concrete.</strong>
-                <p>Cards point to shipped artifacts, not questions about the dashboard itself.</p>
+                <strong>Decision cards live on home.</strong>
+                <p>Home is where Derek answers asks and where briefs sit closest to the choice.</p>
               </div>
             </article>
             <article class="ops-card">
               <span class="ops-index">02</span>
               <div>
-                <strong>Agent remains default owner.</strong>
-                <p>Derek is only asked for the narrow pieces that are actually human-owned.</p>
+                <strong>/state stays concise.</strong>
+                <p>This page exists to orient Derek quickly, not to repeat every implementation detail or bury the signal.</p>
               </div>
             </article>
             <article class="ops-card">
               <span class="ops-index">03</span>
               <div>
-                <strong>Real submit path beats decorative UI.</strong>
-                <p>If storage is not wired on a deploy, the page says that plainly instead of pretending input is captured.</p>
+                <strong>Status should be honest.</strong>
+                <p>If storage or notifications are incomplete, the page should say that plainly instead of implying the system is finished.</p>
               </div>
             </article>
           </div>
@@ -108,7 +113,7 @@
           <div class="section-head">
             <div>
               <p class="eyebrow">KPIs</p>
-              <h2>State table</h2>
+              <h2>Current read on the surface</h2>
             </div>
           </div>
 
@@ -118,27 +123,34 @@
               <span role="columnheader">Goal</span>
               <span role="columnheader">Current</span>
               <span role="columnheader">Status</span>
-              <span role="columnheader">Note</span>
+              <span role="columnheader">What it means</span>
             </div>
             <div class="kpi-row" role="row">
               <strong role="cell">Top-of-site asks</strong>
-              <span role="cell">concrete only</span>
+              <span role="cell">clear asks only</span>
               <span role="cell">yes</span>
               <span role="cell"><span class="dot good"></span>green</span>
-              <span role="cell">Home is now artifact-first.</span>
+              <span role="cell">Home cards now lead with the requested decision.</span>
             </div>
             <div class="kpi-row" role="row">
               <strong role="cell">Owner default</strong>
               <span role="cell">agent</span>
               <span role="cell">agent</span>
               <span role="cell"><span class="dot good"></span>green</span>
-              <span role="cell">Human ask appears only when needed.</span>
+              <span role="cell">Human input is still narrow and explicit.</span>
+            </div>
+            <div class="kpi-row" role="row">
+              <strong role="cell">Brief coverage</strong>
+              <span role="cell">every ask</span>
+              <span role="cell">yes</span>
+              <span role="cell"><span class="dot good"></span>green</span>
+              <span role="cell">Each decision card now exposes a dedicated brief link.</span>
             </div>
             <div class="kpi-row" role="row">
               <strong role="cell">Submit path</strong>
-              <span role="cell">real</span>
-              <span role="cell">implemented</span>
-              <span role="cell"><span class="dot warn"></span>binding dependent</span>
+              <span role="cell">real + durable</span>
+              <span role="cell">binding dependent</span>
+              <span role="cell"><span class="dot warn"></span>open</span>
               <span role="cell">D1 becomes durable once the Pages binding exists.</span>
             </div>
             <div class="kpi-row" role="row">
@@ -146,34 +158,39 @@
               <span role="cell">visible alert</span>
               <span role="cell">missing</span>
               <span role="cell"><span class="dot warn"></span>open</span>
-              <span role="cell">Repo saves decisions but does not notify Derek elsewhere yet.</span>
+              <span role="cell">The system can save decisions without notifying Derek elsewhere yet.</span>
             </div>
           </div>
         </section>
 
-        <section class="panel stack-section" id="agents">
+        <section class="panel stack-section" id="roles">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Agents</p>
-              <h2>Roles</h2>
+              <p class="eyebrow">Roles</p>
+              <h2>Who owns what</h2>
             </div>
           </div>
 
-          <div class="state-grid">
+          <div class="state-grid state-grid-balanced">
             <article class="state-card">
               <span class="state-label">coco main</span>
               <strong>Owns routing, review, and escalation.</strong>
-              <p>Keeps Derek-facing asks tiny and explicit.</p>
+              <p>Keeps Derek-facing asks short, clear, and attached to the right brief.</p>
             </article>
             <article class="state-card">
               <span class="state-label">execution agents</span>
               <strong>Ship narrow work.</strong>
-              <p>Return validated artifacts rather than process chatter.</p>
+              <p>Return validated artifacts instead of process chatter.</p>
             </article>
             <article class="state-card">
               <span class="state-label">decision api</span>
               <strong>Captures responses.</strong>
               <p>Lives under <code>/api/decisions</code> and prefers D1 when the binding is present.</p>
+            </article>
+            <article class="state-card state-card-accent">
+              <span class="state-label">read brief</span>
+              <strong>Need the design rationale?</strong>
+              <p><a class="brief-link brief-link-inline" href="/briefs/state-route.html">Open /state route brief</a></p>
             </article>
           </div>
         </section>

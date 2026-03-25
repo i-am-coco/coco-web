@@ -58,6 +58,20 @@ async function ensureSchema(db) {
     .run();
 }
 
+function normalizeDecisionRow(row) {
+  return {
+    id: row.id,
+    cardId: row.card_id,
+    cardTitle: row.card_title,
+    choiceKey: row.choice_key,
+    choiceLabel: row.choice_label,
+    note: row.note,
+    recommendedOwner: row.recommended_owner,
+    submittedBy: row.submitted_by,
+    createdAt: row.created_at
+  };
+}
+
 async function loadRecent(db) {
   const { results = [] } = await db
     .prepare(
@@ -68,15 +82,16 @@ async function loadRecent(db) {
     )
     .all();
 
+  const recent = results.map(normalizeDecisionRow);
   const latestByCard = {};
-  for (const row of results) {
-    if (!latestByCard[row.card_id]) {
-      latestByCard[row.card_id] = row;
+  for (const row of recent) {
+    if (!latestByCard[row.cardId]) {
+      latestByCard[row.cardId] = row;
     }
   }
 
   return {
-    recent: results,
+    recent,
     latestByCard
   };
 }
@@ -112,7 +127,10 @@ function validatePayload(payload) {
     return { ok: false, message: "note is too long." };
   }
 
-  const choiceLabel = payload.choiceKey === "other" ? "Other" : card.options[payload.choiceKey];
+  const choiceLabel = payload.choiceKey === "other" ? "Other" : card.options[payload.choiceKey]?.label;
+  if (!choiceLabel) {
+    return { ok: false, message: "Unknown choiceKey for this card." };
+  }
 
   return {
     ok: true,

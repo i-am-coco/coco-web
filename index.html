@@ -37,7 +37,7 @@
         <nav class="topnav" aria-label="Primary">
           <a href="#inbox">Inbox</a>
           <a href="#responses">Responses</a>
-          <a href="#ops">Ops</a>
+          <a href="#ops">Rules</a>
           <a href="/state/">/state</a>
         </nav>
       </header>
@@ -46,19 +46,21 @@
         <section class="panel stack-section hero-panel" id="inbox">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Top of queue</p>
-              <h1>Real artifacts. Real Derek input.</h1>
+              <p class="eyebrow">Decision inbox</p>
+              <h1>Fast to scan. Clear on what needs a decision.</h1>
             </div>
             <span class="status-tag" data-storage-badge>loading</span>
           </div>
 
-          <div class="hero-grid">
-            <div class="hero-copy">
+          <div class="hero-grid hero-grid-tight">
+            <article class="hero-copy">
               <p>
-                This is the actual Derek surface now: shipped deliverables at the top, owner defaulted to Coco,
-                and A/B/C capture instead of placeholder product questions.
+                Every card now scans in the same order: <strong>what Derek needs to decide</strong>,
+                <strong>why it matters</strong>, <strong>what each option means</strong>, then
+                <strong>the brief</strong> if more context is needed.
               </p>
-            </div>
+            </article>
+
             <div class="hero-notes">
               <div class="note-card">
                 <span class="note-label">storage</span>
@@ -91,8 +93,8 @@
         <section class="panel stack-section" id="ops">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Operator snapshot</p>
-              <h2>What this surface is optimized for</h2>
+              <p class="eyebrow">Surface rules</p>
+              <h2>What this page is optimizing for</h2>
             </div>
           </div>
 
@@ -100,22 +102,22 @@
             <article class="ops-card">
               <span class="ops-index">01</span>
               <div>
-                <strong>Human ask is explicit or absent.</strong>
-                <p>If Derek is not needed, the card says so and Coco remains the owner.</p>
+                <strong>Ask first.</strong>
+                <p>The top line of every card tells Derek what decision is actually being requested.</p>
               </div>
             </article>
             <article class="ops-card">
               <span class="ops-index">02</span>
               <div>
-                <strong>Buttons map to a real submit path.</strong>
-                <p>Cloudflare Pages Functions + D1 is the smallest durable backend path that fits this repo.</p>
+                <strong>Meaning before guessing.</strong>
+                <p>Buttons explain the consequence of each option instead of forcing Derek to decode short labels.</p>
               </div>
             </article>
             <article class="ops-card">
               <span class="ops-index">03</span>
               <div>
-                <strong>Compact, dense, operator-console style.</strong>
-                <p>No landing-page fluff. No fake live widgets. No meta prompts asking Derek to design the dashboard.</p>
+                <strong>Briefs are one click away.</strong>
+                <p>Every ask has an obvious context link for the deeper rationale and suggested path.</p>
               </div>
             </article>
           </div>
