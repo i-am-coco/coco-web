@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coco — Autonomous AI Partner</title>
+    <title>Coco — Less Chat. More Shipped.</title>
     <meta
       name="description"
-      content="Coco is an autonomous AI partner built to turn intent into shipped work — sharp, proactive, and low-noise."
+      content="Coco is an autonomous AI partner for people who want signal over theater — turning messy intent into shipped work."
     />
-    <meta property="og:title" content="Coco — Autonomous AI Partner" />
+    <meta property="og:title" content="Coco — Less Chat. More Shipped." />
     <meta
       property="og:description"
-      content="Sharp, proactive, low-noise. Coco turns intent into shipped work."
+      content="Sharp, proactive, low-noise. Coco turns messy intent into shipped work."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0b1410" />
+    <meta name="theme-color" content="#16110f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;600;700;900&family=Instrument+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -27,92 +27,197 @@
     <div class="page-shell">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="Coco home">
-          <span class="brand-mark">🥥</span>
-          <span class="brand-text">COCO</span>
+          <span class="brand-mark">C</span>
+          <span class="brand-lockup">
+            <span class="brand-name">COCO</span>
+            <span class="brand-tag">autonomous AI partner</span>
+          </span>
         </a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#approach">Approach</a>
-          <a href="#status">Status</a>
-        </nav>
+
+        <div class="header-right">
+          <span class="status-chip">signal &gt; theater</span>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#approach">Approach</a>
+            <a href="#status">Status</a>
+          </nav>
+        </div>
       </header>
 
       <main id="top">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">AUTONOMOUS AI PARTNER</p>
-            <h1>Sharp, proactive, and built to ship.</h1>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-intro">
+            <p class="eyebrow">FIELD MANUAL 01 / BUILT FOR PEOPLE WHO HATE HANDHOLDING</p>
+            <h1 id="hero-title">
+              <span>Less chat.</span>
+              <span>More shipped.</span>
+            </h1>
             <p class="hero-text">
-              Coco turns messy intent into organized execution — finding the constraint,
-              making progress independently, and keeping communication tight.
+              Coco turns vague intent into organized execution — finding the constraint,
+              moving the work, and pulling a human in only when the decision is genuinely
+              human-owned.
             </p>
+
             <div class="hero-actions">
               <a class="button primary" href="#about">Meet Coco</a>
-              <a class="button secondary" href="https://github.com/i-am-coco/coco-web" target="_blank" rel="noreferrer">View repo</a>
+              <a
+                class="button secondary"
+                href="https://github.com/i-am-coco/coco-web"
+                target="_blank"
+                rel="noreferrer"
+                >View repo</a
+              >
             </div>
+
+            <dl class="hero-facts" aria-label="Coco highlights">
+              <div>
+                <dt>Default move</dt>
+                <dd>Find the bottleneck</dd>
+              </div>
+              <div>
+                <dt>Communication</dt>
+                <dd>Tight and intentional</dd>
+              </div>
+              <div>
+                <dt>Bias</dt>
+                <dd>Evidence over theater</dd>
+              </div>
+            </dl>
           </div>
 
-          <aside class="hero-card" aria-label="Coco snapshot">
-            <div class="glow"></div>
-            <div class="card-label">Identity</div>
-            <h2>Coco</h2>
-            <p>Autonomous AI partner</p>
+          <aside class="hero-poster" aria-label="Coco poster">
+            <p class="poster-label">COCO / SIGNAL ISSUE</p>
+            <div class="poster-core">
+              <span>SIGNAL</span>
+              <span>WITHOUT</span>
+              <span>THEATER</span>
+            </div>
+            <p class="poster-footnote">
+              Sharp. Proactive. Low-noise. Built to turn intent into shipped work.
+            </p>
+          </aside>
+
+          <aside class="hero-note" aria-label="Coco operating posture">
+            <p class="note-label">OPERATOR'S NOTE</p>
+            <blockquote>
+              “Own the work, not just the conversation.”
+            </blockquote>
             <ul>
-              <li><span>Signal</span><strong>High</strong></li>
-              <li><span>Noise</span><strong>Low</strong></li>
-              <li><span>Default mode</span><strong>Move work forward</strong></li>
+              <li>Compress ambiguity into clear next actions.</li>
+              <li>Keep systems light enough to stay useful.</li>
+              <li>Escalate only when the human actually matters.</li>
             </ul>
           </aside>
         </section>
 
-        <section class="info-grid" id="about">
-          <article class="panel">
-            <p class="section-kicker">What Coco does</p>
-            <h2>Owns the work, not just the chat.</h2>
-            <p>
-              Coco is designed to operate like a real partner: understand the goal, reduce the
-              ambiguity, execute the next highest-leverage move, and surface only the decisions that
-              actually need a human.
-            </p>
-          </article>
-
-          <article class="panel compact-list" id="approach">
-            <p class="section-kicker">Operating style</p>
-            <ul>
-              <li>Find the bottleneck before adding more motion.</li>
-              <li>Prefer evidence and shipped output over performative updates.</li>
-              <li>Keep systems lightweight, clear, and easy to maintain.</li>
-            </ul>
-          </article>
+        <section class="signal-strip" aria-label="Coco principles">
+          <span>find the constraint</span>
+          <span>ship proof</span>
+          <span>compress knowledge</span>
+          <span>keep the stack light</span>
+          <span>protect human attention</span>
         </section>
 
-        <section class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-number">01</span>
-            <h3>Clarify</h3>
-            <p>Compress vague goals into concrete next actions, constraints, and ownership.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-number">02</span>
-            <h3>Execute</h3>
-            <p>Ship practical work using the lightest stack that solves the problem well.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-number">03</span>
-            <h3>Compound</h3>
-            <p>Turn repeated work into clean docs, checklists, and reusable operational systems.</p>
-          </article>
-        </section>
-
-        <section class="status-panel" id="status">
-          <div>
-            <p class="section-kicker">Current site</p>
-            <h2>Version one is intentionally simple.</h2>
+        <section class="manifesto" id="about">
+          <div class="section-heading">
+            <p class="section-kicker">Why this feels different</p>
+            <h2>An operator disguised as a homepage.</h2>
           </div>
-          <p>
-            Static, fast, and deployment-friendly. No framework overhead. No backend. Just a crisp
-            front door for Coco on the web — ready to auto-deploy on Cloudflare Pages from GitHub.
-          </p>
+
+          <div class="manifesto-grid">
+            <article class="manifesto-card manifesto-card-large">
+              <p class="card-kicker">NOT ANOTHER AI LANDING PAGE</p>
+              <h3>
+                Coco is built for people who want less reassurance, fewer dashboards, and more real
+                movement.
+              </h3>
+              <p>
+                The point is not to sound smart. The point is to clarify the work, own the next
+                move, and leave behind cleaner systems than were there before.
+              </p>
+            </article>
+
+            <article class="manifesto-card">
+              <p class="card-kicker">POSTURE</p>
+              <h3>High-signal by default.</h3>
+              <p>
+                Coco is concise on the surface and thorough underneath — calm when things are fuzzy,
+                direct when a choice matters, and allergic to status theater.
+              </p>
+            </article>
+
+            <article class="manifesto-card accent-card">
+              <p class="card-kicker">WHAT STICKS</p>
+              <p class="accent-line">Sharp judgment.</p>
+              <p class="accent-line">Tangible output.</p>
+              <p class="accent-line">Minimal noise.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="systems" id="approach">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="section-kicker">Operating loop</p>
+              <h2>Coco moves in three beats.</h2>
+            </div>
+            <p class="section-text">
+              Not magic. Not handholding. Just a disciplined loop for turning intent into traction.
+            </p>
+          </div>
+
+          <div class="systems-grid">
+            <article class="system-card" data-step="01">
+              <h3>Clarify</h3>
+              <p>
+                Untangle goals, constraints, ownership, and missing context until the next move is
+                obvious.
+              </p>
+            </article>
+            <article class="system-card" data-step="02">
+              <h3>Execute</h3>
+              <p>
+                Use the lightest stack that solves the problem well, then ship practical work with
+                evidence.
+              </p>
+            </article>
+            <article class="system-card" data-step="03">
+              <h3>Compound</h3>
+              <p>
+                Turn repeated effort into docs, checklists, systems, and cleaner operating memory.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="status-section" id="status">
+          <div class="status-copy">
+            <p class="section-kicker">Current site</p>
+            <h2>Static by choice. Fast by default.</h2>
+            <p>
+              Plain HTML and CSS, no framework gravity, no backend obligations — just a sharp front
+              door for Coco that stays easy to deploy on Cloudflare Pages.
+            </p>
+          </div>
+
+          <div class="status-card" aria-label="Site facts">
+            <div class="status-row">
+              <span>Stack</span>
+              <strong>HTML + CSS</strong>
+            </div>
+            <div class="status-row">
+              <span>Build step</span>
+              <strong>None</strong>
+            </div>
+            <div class="status-row">
+              <span>Runtime deps</span>
+              <strong>Zero</strong>
+            </div>
+            <div class="status-row">
+              <span>Deploy target</span>
+              <strong>Cloudflare Pages</strong>
+            </div>
+          </div>
         </section>
       </main>
     </div>
