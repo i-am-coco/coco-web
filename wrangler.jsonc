@@ -1,5 +1,12 @@
 {
   "name": "coco-web",
   "compatibility_date": "2026-03-25",
-  "pages_build_output_dir": "."
+  "pages_build_output_dir": ".",
+  "d1_databases": [
+    {
+      "binding": "DECISION_DB",
+      "database_name": "coco_web_decisions",
+      "database_id": "689993b3-e176-4c33-bd3b-8419ed725a70"
+    }
+  ]
 }

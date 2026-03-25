@@ -76,34 +76,36 @@ export const decisionInbox = {
     },
     {
       id: "response-capture-path",
-      kind: "hard blocker",
-      status: "blocked on Cloudflare token",
-      title: "Fix durable decision storage",
-      why: "Your clicks are not persisting yet because the current Cloudflare token cannot create/bind D1. Until that permission is added, the inbox is not trustworthy.",
-      recommendedOwner: "human",
+      kind: "live system",
+      status: "saving works · notifications missing",
+      title: "Decision inbox storage is live",
+      why: "Your A/B/C clicks now persist durably in Cloudflare D1. The remaining gap is notification: saves are silent until I wire a push path back into OpenClaw/Telegram.",
+      recommendedOwner: "agent",
       humanAsk:
-        "Add Account → D1 Edit/Write to the existing Cloudflare token, then the inbox can save your choices durably.",
+        "No action needed right now unless you want push notifications before the next site iteration.",
       brief: {
-        label: "Read brief — why D1 permission is the only blocker",
+        label: "Read brief — what works now vs what is still missing",
         href: "/briefs/response-capture-path.html"
       },
       links: [
-        { label: "Fix token in Cloudflare", href: "https://dash.cloudflare.com/profile/api-tokens" },
-        { label: "Find your account id", href: "https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/" },
-        { label: "Check live API status", href: "/api/decisions" }
+        { label: "Check live API status", href: "/api/decisions" },
+        {
+          label: "View inbox code",
+          href: "https://github.com/i-am-coco/coco-web/blob/main/functions/api/decisions.js"
+        }
       ],
       options: {
         a: {
-          label: "I added D1 Edit/Write",
-          detail: "Use this after updating the existing token so Coco can finish the durable inbox path."
+          label: "Keep this storage path",
+          detail: "D1 is now the durable sink for Derek decisions."
         },
         b: {
-          label: "I need exact permission help",
-          detail: "Use this if you are still stuck in the Cloudflare token UI and want the exact permission row again."
+          label: "Add notifications next",
+          detail: "Make each saved Derek input actively notify Coco/Telegram/OpenClaw."
         },
         c: {
-          label: "Skip durable storage for now",
-          detail: "Use this only if you are okay with the inbox staying non-durable for now."
+          label: "Change the storage path later",
+          detail: "Only do this if D1 stops fitting the product direction."
         }
       }
     }
