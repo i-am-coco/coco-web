@@ -59,6 +59,36 @@ function getLastKnownDecision(cardId) {
   return latestRemoteByCard[cardId] || localFallback.find((entry) => entry.cardId === cardId) || null;
 }
 
+function getChoiceLabel(card, choiceKey) {
+  if (choiceKey === "other") return "Other";
+  return card?.options?.[choiceKey]?.label || String(choiceKey || "Other").toUpperCase();
+}
+
+function normalizeRemoteDecision(row) {
+  if (!row?.cardId) return null;
+
+  const card = decisionInbox.cards.find((entry) => entry.id === row.cardId);
+  return {
+    ...row,
+    cardTitle: row.cardTitle || card?.title || row.cardId,
+    choiceLabel: row.choiceLabel || getChoiceLabel(card, row.choiceKey),
+    note: row.note || "",
+    source: row.source || "remote"
+  };
+}
+
+function buildLatestRemoteByCard(recent = []) {
+  return recent.reduce((accumulator, row) => {
+    if (!accumulator[row.cardId]) accumulator[row.cardId] = row;
+    return accumulator;
+  }, {});
+}
+
+function getRecentRemoteDecisions(payload = {}) {
+  const recent = payload.summary?.recent || payload.recent || [];
+  return recent.map(normalizeRemoteDecision).filter(Boolean);
+}
+
 function renderChoiceButtons(card) {
   return Object.entries(card.options)
     .map(
@@ -90,7 +120,19 @@ function renderSupportLinks(card) {
 function renderInbox() {
   if (!inboxRoot) return;
 
-  inboxRoot.innerHTML = decisionInbox.cards
+  const activeCards = decisionInbox.cards.filter((card) => !latestRemoteByCard[card.id]);
+
+  if (!activeCards.length) {
+    inboxRoot.innerHTML = `
+      <div class="log-empty artifact-list-empty">
+        <strong>Inbox clear.</strong>
+        <p>All current cards already have a saved answer. Check History below for the latest direction and follow-through.</p>
+      </div>
+    `;
+    return;
+  }
+
+  inboxRoot.innerHTML = activeCards
     .map((card) => {
       const lastDecision = getLastKnownDecision(card.id);
       const lastStatus = lastDecision
@@ -237,11 +279,12 @@ async function refreshServerState() {
 
     if (!response.ok) throw new Error(`GET /api/decisions failed: ${response.status}`);
     const payload = await response.json();
+    const recentRemoteDecisions = getRecentRemoteDecisions(payload);
 
-    latestRemoteByCard = payload.summary?.latestByCard || {};
+    latestRemoteByCard = payload.summary?.latestByCard || buildLatestRemoteByCard(recentRemoteDecisions);
     updateStorageChrome(payload.storage || storageState);
     renderInbox();
-    renderResponseLog(payload.summary?.recent || []);
+    renderResponseLog(recentRemoteDecisions);
   } catch {
     updateStorageChrome({
       configured: false,
@@ -312,7 +355,16 @@ async function submitDecision(cardId, choiceKey, note = "") {
       throw new Error(payload.error || `POST /api/decisions failed: ${response.status}`);
     }
 
-    latestRemoteByCard[cardId] = payload.decision;
+    latestRemoteByCard[cardId] =
+      normalizeRemoteDecision(payload.decision || payload.stored) || {
+        cardId,
+        cardTitle: card.title,
+        choiceKey,
+        choiceLabel,
+        note: noteText,
+        createdAt: new Date().toISOString(),
+        source: "remote"
+      };
     renderInbox();
     setCardStatus(cardId, `Saved to D1 · ${choiceLabel}`);
     await refreshServerState();
