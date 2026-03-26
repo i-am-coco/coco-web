@@ -1,7 +1,7 @@
 export const decisionInbox = {
-  generatedAt: "2026-03-25T21:25:00Z",
+  generatedAt: "2026-03-26T00:12:00Z",
   notificationGap:
-    "This repo can persist Derek input once a Cloudflare D1 binding is attached, but it still does not send Telegram or other push notifications on save.",
+    "Production saves can now persist in D1 and alert Coco via Telegram when the Pages runtime has TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID.",
   cards: [
     {
       id: "decision-inbox-home",
@@ -77,14 +77,14 @@ export const decisionInbox = {
     {
       id: "response-capture-path",
       kind: "live system",
-      status: "saving works · notifications missing",
-      title: "Decision inbox storage is live",
-      why: "Your A/B/C clicks now persist durably in Cloudflare D1. The remaining gap is notification: saves are silent until I wire a push path back into OpenClaw/Telegram.",
+      status: "saving works · Telegram alerts live",
+      title: "Decision inbox storage + alert path is live",
+      why: "Your A/B/C clicks persist durably in Cloudflare D1 and now emit a Telegram alert to Coco/OpenClaw instead of sitting silently in the database.",
       recommendedOwner: "agent",
       humanAsk:
-        "No action needed right now unless you want push notifications before the next site iteration.",
+        "No action needed right now unless you want the alert copy or routing changed.",
       brief: {
-        label: "Read brief — what works now vs what is still missing",
+        label: "Read brief — what works now in the live save + alert path",
         href: "/briefs/response-capture-path.html"
       },
       links: [
@@ -96,16 +96,16 @@ export const decisionInbox = {
       ],
       options: {
         a: {
-          label: "Keep this storage path",
-          detail: "D1 is now the durable sink for Derek decisions."
+          label: "Keep this storage + alert path",
+          detail: "D1 remains the durable sink and Telegram is the active notification path for Derek decisions."
         },
         b: {
-          label: "Add notifications next",
-          detail: "Make each saved Derek input actively notify Coco/Telegram/OpenClaw."
+          label: "Tighten the alert copy next",
+          detail: "Keep the path, but refine the message body or metadata sent on each save."
         },
         c: {
-          label: "Change the storage path later",
-          detail: "Only do this if D1 stops fitting the product direction."
+          label: "Change the notification target later",
+          detail: "Only do this if Telegram/OpenClaw routing stops fitting the operating loop."
         }
       }
     }

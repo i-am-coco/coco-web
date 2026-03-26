@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brief — response capture path</title>
+    <meta name="theme-color" content="#091016" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="brief-page">
+    <div class="site-frame">
+      <header class="brief-header">
+        <a class="brand" href="/" aria-label="Back to inbox">
+          <span class="brand-mark">C</span>
+          <span class="brand-copy">
+            <span class="brand-name">COCO</span>
+            <span class="brand-subtitle">brief / save + alert path</span>
+          </span>
+        </a>
+
+        <nav class="brief-topnav" aria-label="Brief links">
+          <a href="/">Inbox</a>
+          <a href="/api/decisions">API</a>
+          <a href="https://github.com/i-am-coco/coco-web/blob/main/functions/api/decisions.js">Function source</a>
+        </nav>
+      </header>
+
+      <main class="console-shell">
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Research brief</p>
+              <h1>Why Cloudflare D1 + Telegram is the live decision path now</h1>
+            </div>
+            <span class="status-tag status-good">D1 + alert live</span>
+          </div>
+
+          <div class="brief-grid">
+            <article class="brief-card">
+              <span class="brief-label">decision</span>
+              <strong>Should the current decision capture path keep D1 as its durable backend?</strong>
+              <p class="brief-lead">Recommendation: yes. D1 is the smallest durable option that matches the repo's Pages-friendly architecture.</p>
+            </article>
+            <article class="brief-card brief-card-accent">
+              <span class="brief-label">recommended path</span>
+              <strong>The shipped path is now “persist first, then alert immediately after save.”</strong>
+              <p>D1 remains the durable sink, and the Pages Function now follows a successful save with a Telegram alert to Coco/OpenClaw.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Analysis</p>
+              <h2>Why this backend path is the least disruptive</h2>
+            </div>
+          </div>
+
+          <div class="brief-columns">
+            <article class="brief-block">
+              <span class="brief-label">fit with the repo</span>
+              <strong>D1 fits static Pages + Functions cleanly.</strong>
+              <p>The site is already built as plain HTML, CSS, and small JS. Pages Functions plus D1 preserve that lightweight shape without introducing a bigger app stack.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">user trust issue</span>
+              <strong>Buttons only matter if Derek trusts the save.</strong>
+              <p>The UI can be excellent, but the system still fails if a tap is ambiguous or temporary. Durable storage resolves that first-order problem.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">notification path</span>
+              <strong>Notification plumbing now rides the same save flow.</strong>
+              <p>After D1 persistence succeeds, the Pages Function sends a Telegram alert so saved decisions no longer sit silently in storage.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">when to switch</span>
+              <strong>Only switch if another sink solves a real constraint.</strong>
+              <p>A different backend is justified if it materially improves durability, integration speed, or downstream notification handling without making the site heavier.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Options</p>
+              <h2>What the choices mean</h2>
+            </div>
+          </div>
+
+          <ul class="brief-list">
+            <li>
+              <strong>A — Use D1 as the default sink</strong>
+              Keep the current architecture and treat D1 as the durable home for captured decisions.
+            </li>
+            <li>
+              <strong>B — Keep D1 and keep the Telegram alert path</strong>
+              Preserve the current flow where reliable storage happens first and Telegram notification follows immediately after save.
+            </li>
+            <li>
+              <strong>C — Switch to a different storage path</strong>
+              Replace D1 with another sink because the current fit or integration cost is not good enough.
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer-bar">
+        <span><a href="/">back to inbox</a></span>
+        <span>one-page brief</span>
+        <span>save + alert path rationale</span>
+      </footer>
+    </div>
+  </body>
+</html>

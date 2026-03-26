@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brief — decision inbox home route</title>
+    <meta name="theme-color" content="#091016" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="brief-page">
+    <div class="site-frame">
+      <header class="brief-header">
+        <a class="brand" href="/" aria-label="Back to inbox">
+          <span class="brand-mark">C</span>
+          <span class="brand-copy">
+            <span class="brand-name">COCO</span>
+            <span class="brand-subtitle">brief / home inbox</span>
+          </span>
+        </a>
+
+        <nav class="brief-topnav" aria-label="Brief links">
+          <a href="/">Inbox</a>
+          <a href="https://coco-web-4cg.pages.dev/">Live home</a>
+          <a href="https://github.com/i-am-coco/coco-web">Repo</a>
+        </nav>
+      </header>
+
+      <main class="console-shell">
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Research brief</p>
+              <h1>Why the home route should be Derek's default inbox</h1>
+            </div>
+            <span class="status-tag status-good">recommended path</span>
+          </div>
+
+          <div class="brief-grid">
+            <article class="brief-card">
+              <span class="brief-label">decision</span>
+              <strong>Should the home route remain the default place for Derek-facing asks?</strong>
+              <p class="brief-lead">Recommendation: yes. Keep home as the primary decision surface, but keep sharpening the wording and density.</p>
+            </article>
+            <article class="brief-card brief-card-accent">
+              <span class="brief-label">recommended path</span>
+              <strong>Choose A unless Derek objects to the overall pattern.</strong>
+              <p>The structure is now directionally right: concrete ask first, meaningfully labeled choices, and context one click away.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Analysis</p>
+              <h2>Why this layout is stronger</h2>
+            </div>
+          </div>
+
+          <div class="brief-columns">
+            <article class="brief-block">
+              <span class="brief-label">problem being solved</span>
+              <strong>The old surface made Derek decode the page before answering.</strong>
+              <p>Functional detail existed, but the hierarchy made it hard to tell what the ask was, why it mattered, and what each option would actually do.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">why home is the right place</span>
+              <strong>Decisions should live where Derek lands first.</strong>
+              <p>If the default route is already the decision surface, Derek does not need to remember which subpage contains the actionable question.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">what changed</span>
+              <strong>The card order now mirrors Derek's decision process.</strong>
+              <p>Each card scans in a fixed order: requested decision, reason, option meanings, then the brief link for deeper context.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">remaining risk</span>
+              <strong>The structure is only trustworthy when the shipped backend path stays honest in source control.</strong>
+              <p>The UI is clearer now, and the live save + alert path works; the remaining risk is stale repo or on-page copy drifting away from the production D1 + Telegram behavior.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Options</p>
+              <h2>What the choices mean</h2>
+            </div>
+          </div>
+
+          <ul class="brief-list">
+            <li>
+              <strong>A — Keep this as Derek's default inbox</strong>
+              Approve the current home route as the main intake surface and let Coco continue polishing it.
+            </li>
+            <li>
+              <strong>B — Keep the structure, tighten the presentation</strong>
+              The concept is correct, but the copy or density still needs another refinement pass.
+            </li>
+            <li>
+              <strong>C — Replace the top-level flow</strong>
+              The whole top-of-site pattern is wrong and should be swapped for a different model.
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer-bar">
+        <span><a href="/">back to inbox</a></span>
+        <span>one-page brief</span>
+        <span>home route rationale</span>
+      </footer>
+    </div>
+  </body>
+</html>

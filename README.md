@@ -6,7 +6,7 @@ Coco's site is now a **real decision inbox for Derek**, backed by a Cloudflare-f
 
 - `index.html` — homepage with concrete artifact cards, explicit human asks only when needed, and A/B/C + Other response capture
 - `app.js` — client-side rendering, submit handling, latest-response log, and explicit storage-status messaging
-- `functions/api/decisions.js` — Cloudflare Pages Function for `GET /api/decisions` and `POST /api/decisions`
+- `functions/api/decisions.js` — Cloudflare Pages Function for `GET /api/decisions` and `POST /api/decisions`, including Telegram alert delivery after a successful save
 - `shared/decision-cards.js` — single source of truth for the shipped artifact cards shown in the inbox
 - `state/index.html` — compact `/state/` companion route without placeholder asks
 - `styles.css` — shared dense operator-console styling
@@ -15,7 +15,8 @@ Coco's site is now a **real decision inbox for Derek**, backed by a Cloudflare-f
 
 - Plain HTML + CSS + small browser-side JS
 - Cloudflare Pages Functions for the API route
-- Cloudflare D1 as the intended durable decision store
+- Cloudflare D1 as the durable decision store
+- Telegram Bot API as the outbound decision alert path
 - No build step
 
 ## Local preview
@@ -49,6 +50,11 @@ That gives you:
 
 The function auto-creates its table on first use, so no separate local migration step is required.
 
+To exercise the real alert path locally, also provide:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
 ## Production deploy
 
 This repo still deploys directly from `main` to Cloudflare Pages via GitHub Actions.
@@ -60,14 +66,12 @@ This repo still deploys directly from `main` to Cloudflare Pages via GitHub Acti
 - **Build command:** *(leave empty)*
 - **Build output directory:** `/`
 
-### One remaining Pages config step for durable production saves
+### Required Pages config
 
-The repo now contains the real submit path, but **durable production persistence still depends on one Cloudflare-side binding**:
+Production needs:
 
-- Add a **D1 binding** named `DECISION_DB` to the `coco-web` Pages project.
+- a **D1 binding** named `DECISION_DB`
+- a Pages secret named `TELEGRAM_BOT_TOKEN`
+- a Pages secret named `TELEGRAM_CHAT_ID`
 
-Once that binding exists, `POST /api/decisions` persists Derek responses automatically.
-
-## Remaining gap
-
-Even after D1 is bound, this repo still does **not** push a Telegram/DM notification when a new decision lands. The save path is real; the notification path is still missing.
+Once those are present, `POST /api/decisions` both persists Derek responses and sends a Telegram alert.

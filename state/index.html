@@ -69,9 +69,9 @@
               <p><a class="brief-link brief-link-inline" href="/briefs/operator-surface.html">Open operator-surface brief</a></p>
             </article>
             <article class="state-card">
-              <span class="state-label">current open gap</span>
-              <strong>Saved decisions still do not notify Derek elsewhere.</strong>
-              <p>The storage path can work, but Telegram or other push notification plumbing is still missing.</p>
+              <span class="state-label">current alert path</span>
+              <strong>Saved decisions can now notify Coco via Telegram.</strong>
+              <p>The homepage still captures decisions into D1, and each successful save can emit an active Telegram alert from the Pages Function.</p>
             </article>
           </div>
         </section>
@@ -149,16 +149,16 @@
             <div class="kpi-row" role="row">
               <strong role="cell">Submit path</strong>
               <span role="cell">real + durable</span>
-              <span role="cell">binding dependent</span>
-              <span role="cell"><span class="dot warn"></span>open</span>
-              <span role="cell">D1 becomes durable once the Pages binding exists.</span>
+              <span role="cell">live</span>
+              <span role="cell"><span class="dot good"></span>green</span>
+              <span role="cell">Production saves now persist durably in Cloudflare D1 through the bound DECISION_DB Pages binding.</span>
             </div>
             <div class="kpi-row" role="row">
               <strong role="cell">Notification plumbing</strong>
               <span role="cell">visible alert</span>
-              <span role="cell">missing</span>
-              <span role="cell"><span class="dot warn"></span>open</span>
-              <span role="cell">The system can save decisions without notifying Derek elsewhere yet.</span>
+              <span role="cell">Telegram live</span>
+              <span role="cell"><span class="dot good"></span>green</span>
+              <span role="cell">Successful saves now trigger a Telegram alert to Coco/OpenClaw from the Pages Function.</span>
             </div>
           </div>
         </section>

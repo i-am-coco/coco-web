@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brief — operator surface model</title>
+    <meta name="theme-color" content="#091016" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="brief-page">
+    <div class="site-frame">
+      <header class="brief-header">
+        <a class="brand" href="/state/" aria-label="Back to state">
+          <span class="brand-mark">C</span>
+          <span class="brand-copy">
+            <span class="brand-name">COCO</span>
+            <span class="brand-subtitle">brief / operator surface</span>
+          </span>
+        </a>
+
+        <nav class="brief-topnav" aria-label="Brief links">
+          <a href="/">Inbox</a>
+          <a href="/state/">/state</a>
+          <a href="/briefs/state-route.html">State route brief</a>
+        </nav>
+      </header>
+
+      <main class="console-shell">
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Research brief</p>
+              <h1>Operator surface model: decisions on home, orientation on /state</h1>
+            </div>
+            <span class="status-tag status-good">working model</span>
+          </div>
+
+          <div class="brief-grid">
+            <article class="brief-card">
+              <span class="brief-label">model</span>
+              <strong>Home handles decisions. /state handles orientation.</strong>
+              <p class="brief-lead">This split reduces mixed-purpose clutter and lets each page optimize for one job instead of three.</p>
+            </article>
+            <article class="brief-card brief-card-accent">
+              <span class="brief-label">recommended path</span>
+              <strong>Keep the split and keep the presentation compact.</strong>
+              <p>The right improvement loop is clarity and trust, not adding more decorative surface area.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Why this exists</p>
+              <h2>Underlying design logic</h2>
+            </div>
+          </div>
+
+          <div class="brief-columns">
+            <article class="brief-block">
+              <span class="brief-label">home route</span>
+              <strong>Best for requested action.</strong>
+              <p>The home page is the natural place for Derek-facing asks because it is primary, shallow, and easy to revisit.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">state route</span>
+              <strong>Best for passive understanding.</strong>
+              <p>/state works when Derek wants a quick answer to “what's the current posture?” without being forced into a decision at the same time.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">brief links</span>
+              <strong>Best for depth on demand.</strong>
+              <p>Research briefs stop the cards from bloating while still making the relevant context obvious and one click away.</p>
+            </article>
+            <article class="brief-block">
+              <span class="brief-label">design constraint</span>
+              <strong>Keep it dashboard-like, not promotional.</strong>
+              <p>The surface should feel like an operator console: compact, calm, and high-signal, with enough contrast and hierarchy to scan instantly.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel stack-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Success criteria</p>
+              <h2>What good looks like</h2>
+            </div>
+          </div>
+
+          <ul class="brief-list">
+            <li>
+              <strong>Ask clarity</strong>
+              Derek can tell what is being requested without reading the whole card.
+            </li>
+            <li>
+              <strong>Reason clarity</strong>
+              Derek can tell why the decision matters without opening extra links.
+            </li>
+            <li>
+              <strong>Option clarity</strong>
+              Buttons explain the practical meaning of each path.
+            </li>
+            <li>
+              <strong>Depth clarity</strong>
+              If Derek needs more context, the brief link reads as obviously relevant and worth clicking.
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer-bar">
+        <span><a href="/state/">back to /state</a></span>
+        <span>one-page brief</span>
+        <span>surface model rationale</span>
+      </footer>
+    </div>
+  </body>
+</html>
