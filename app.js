@@ -4,6 +4,7 @@ const inboxRoot = document.querySelector("[data-decision-inbox]");
 const storageBadge = document.querySelector("[data-storage-badge]");
 const storageLine = document.querySelector("[data-storage-line]");
 const responseLog = document.querySelector("[data-response-log]");
+const historySpotlight = document.querySelector("[data-history-spotlight]");
 const notificationGap = document.querySelector("[data-notification-gap]");
 const localKey = "coco-web-decision-fallback";
 
@@ -89,6 +90,13 @@ function getRecentRemoteDecisions(payload = {}) {
   return recent.map(normalizeRemoteDecision).filter(Boolean);
 }
 
+function getHistoryRows(recent = [], limit = 8) {
+  const fallbackRows = localFallback.map((entry) => ({ ...entry, source: "local" }));
+  return [...recent, ...fallbackRows]
+    .sort((left, right) => new Date(right.createdAt) - new Date(left.createdAt))
+    .slice(0, limit);
+}
+
 function renderChoiceButtons(card) {
   return Object.entries(card.options)
     .map(
@@ -126,7 +134,7 @@ function renderInbox() {
     inboxRoot.innerHTML = `
       <div class="log-empty artifact-list-empty">
         <strong>Inbox clear.</strong>
-        <p>All current cards already have a saved answer. Check History below for the latest direction and follow-through.</p>
+        <p>All current cards already have a saved answer. Check the saved history just below for the latest direction and follow-through.</p>
       </div>
     `;
     return;
@@ -216,13 +224,49 @@ function renderInbox() {
   attachActionHandlers();
 }
 
+function renderHistorySpotlight(recent = []) {
+  if (!historySpotlight) return;
+
+  const rows = getHistoryRows(recent, 3);
+
+  if (!rows.length) {
+    historySpotlight.innerHTML = `
+      <div class="log-empty history-spotlight-empty">
+        <strong>No saved decisions yet.</strong>
+        <p>The latest captured direction will surface here as soon as Derek saves an answer.</p>
+      </div>
+    `;
+    return;
+  }
+
+  historySpotlight.innerHTML = rows
+    .map(
+      (row, index) => `
+        <article class="history-spotlight-card">
+          <div class="history-spotlight-topline">
+            <span class="history-spotlight-rank">0${index + 1}</span>
+            <div>
+              <strong>${escapeHtml(row.cardTitle || row.cardId)}</strong>
+              <p>${escapeHtml(row.choiceLabel || "Other")}${row.note ? ` · ${escapeHtml(row.note)}` : ""}</p>
+            </div>
+          </div>
+          <div class="history-spotlight-meta">
+            <span class="status-tag ${row.source === "local" ? "status-warn" : "status-good"}">${escapeHtml(
+              row.source === "local" ? "local only" : "saved"
+            )}</span>
+            <span>${escapeHtml(formatTimestamp(row.createdAt))}</span>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderResponseLog(recent = []) {
+  renderHistorySpotlight(recent);
   if (!responseLog) return;
 
-  const fallbackRows = localFallback.map((entry) => ({ ...entry, source: "local" }));
-  const rows = [...recent, ...fallbackRows]
-    .sort((left, right) => new Date(right.createdAt) - new Date(left.createdAt))
-    .slice(0, 8);
+  const rows = getHistoryRows(recent, 8);
 
   if (!rows.length) {
     responseLog.innerHTML = `

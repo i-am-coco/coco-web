@@ -203,14 +203,18 @@ strong {
 .brief-link:hover,
 .brief-link:focus-visible,
 .link-list a:hover,
-.link-list a:focus-visible {
+.link-list a:focus-visible,
+.history-spotlight-link:hover,
+.history-spotlight-link:focus-visible {
   color: var(--text-strong);
 }
 
 .topnav a:hover,
 .topnav a:focus-visible,
 .brief-topnav a:hover,
-.brief-topnav a:focus-visible {
+.brief-topnav a:focus-visible,
+.history-spotlight-link:hover,
+.history-spotlight-link:focus-visible {
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -382,13 +386,51 @@ li {
   gap: 0.75rem;
 }
 
+.history-spotlight {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.92rem 0.96rem;
+  border: 1px solid rgba(142, 243, 106, 0.16);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, rgba(142, 243, 106, 0.08), rgba(255, 255, 255, 0.028));
+}
+
+.history-spotlight-copy {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.history-spotlight-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(210, 222, 230, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.history-spotlight-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.72rem;
+}
+
 .note-card,
 .state-card,
 .log-row,
 .ops-card,
 .brief-card,
 .brief-block,
-.list-block {
+.list-block,
+.history-spotlight-card {
   display: grid;
   gap: 0.34rem;
 }
@@ -654,7 +696,8 @@ li {
 .other-input:focus,
 .choice-button:focus,
 .other-submit:focus,
-.brief-link:focus {
+.brief-link:focus,
+.history-spotlight-link:focus {
   outline: 2px solid rgba(142, 243, 106, 0.28);
   outline-offset: 2px;
 }
@@ -668,6 +711,57 @@ li {
 
 .submission-status {
   min-height: 1.35rem;
+}
+
+.history-spotlight-card {
+  padding: 0.84rem 0.88rem;
+  border: 1px solid rgba(210, 222, 230, 0.1);
+  border-radius: 0.82rem;
+  background: rgba(8, 15, 22, 0.48);
+}
+
+.history-spotlight-topline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.history-spotlight-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.history-spotlight-rank {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(142, 243, 106, 0.22);
+  border-radius: 0.72rem;
+  color: var(--accent);
+  background: rgba(142, 243, 106, 0.08);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+.history-spotlight-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+
+.history-spotlight-empty {
+  background: rgba(8, 15, 22, 0.36);
 }
 
 .log-row {
@@ -827,7 +921,8 @@ li {
   .brief-grid,
   .brief-columns,
   .choice-grid,
-  .kpi-row {
+  .kpi-row,
+  .history-spotlight-list {
     grid-template-columns: 1fr;
   }
 
@@ -837,7 +932,8 @@ li {
   .topbar,
   .brief-header,
   .log-row,
-  .artifact-section-head {
+  .artifact-section-head,
+  .history-spotlight-head {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -848,6 +944,11 @@ li {
 
   .log-meta {
     justify-items: start;
+  }
+
+  .history-spotlight-meta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

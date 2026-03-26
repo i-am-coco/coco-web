@@ -36,7 +36,7 @@
 
         <nav class="topnav" aria-label="Primary">
           <a href="#inbox">Inbox</a>
-          <a href="#responses">Responses</a>
+          <a href="#responses">Saved history</a>
           <a href="#ops">Rules</a>
           <a href="/state/">/state</a>
         </nav>
@@ -75,14 +75,29 @@
             </div>
           </div>
 
+          <section class="history-spotlight" aria-labelledby="history-spotlight-title">
+            <div class="section-head history-spotlight-head">
+              <div>
+                <p class="eyebrow">Saved history</p>
+                <h2 id="history-spotlight-title">Recent saved decisions stay visible from the top of the page.</h2>
+                <p class="history-spotlight-copy">
+                  Before answering the next card, scan the latest saved direction and follow-through here.
+                </p>
+              </div>
+              <a class="history-spotlight-link" href="#responses">Open full history</a>
+            </div>
+
+            <div class="history-spotlight-list" data-history-spotlight aria-live="polite"></div>
+          </section>
+
           <div class="artifact-list" data-decision-inbox aria-live="polite"></div>
         </section>
 
         <section class="panel stack-section" id="responses">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Decision log</p>
-              <h2>Latest captured input</h2>
+              <p class="eyebrow">Saved history</p>
+              <h2>Recent decision history</h2>
             </div>
             <span class="status-tag">newest first</span>
           </div>
